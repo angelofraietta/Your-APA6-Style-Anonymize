@@ -1,0 +1,69 @@
+\documentclass[a4paper,man,natbib]{apa6}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+% Uncomment only one of the ones below
+%\usepackage{anonymize} % uncomment to publish
+\usepackage[blind]{anonymize} % uncomment to for blind review
+
+\title{Using the anonymize package}
+\shorttitle{Using the anonymize package}
+\author{\anonymize{Angelo Fraietta}}
+\affiliation{\anonymize{University of New South Wales}}
+
+\abstract{One of the things I found particularly frustrating with blind reviewed papers was finding substitute text that did not detract from the flow of thought. This, is both in the writing and the reviewing. What is also very difficult, is then making changes once the paper has been reviewed to ensure that all changes to anonymize the paper have been changed back. Also, having to modify references that could identify me or my co-authors when swapping from review to publish mode was also inconvenient;
+
+This document details a new package that facilitates generating publications that require you to mask parts of the document that could identify you as the author.}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+One of the things I found particularly frustrating with blind reviewed papers was finding substitute text that did not detract from the flow of thought. This, is both in the writing and the reviewing. What is also very difficult, is then making changes once the paper has been reviewed to ensure that all changes to anonymize the paper have been changed back. Also, having to modify references that could identify me or my co-authors when swapping from review to publish mode was also inconvenient;
+This example showing how to use the \textit{anonymize} package. 
+
+Questions may be directed to a.fraietta@unsw.edu.au; please put [Blind Latex] in the subject line.
+
+%use of references
+\section{Use of the package}
+A convenient flag has been provided that will allow you to easily mask any text or reference that could be used to identify you as the author. To enable the feature, comment the line \texttt{\textbackslash usepackage{anonymize} } and uncomment the \texttt{\textbackslash usepackage[blind]{anonymize} } lines near the top of the file. When \texttt{\textbackslash usepackage[blind]{anonymize} } is enabled, anonymized text will be blackened out and masked bibliography names and titles will be anonymised.
+
+\subsection{Masking text}
+To mask text that will identify you, place the text you want to hide inside the \textbackslash anonymize function. If you have enabled the blind review feature, \anonymize{you will Change back to the non-blind mode when you are ready to publish}. 
+
+
+\subsection{References}
+LaTeX automatically generates a bibliography in the APA style from your .bib file. The citep command generates a formatted citation in parentheses \citep{Lamport1986}. The cite command generates one without parentheses. LaTeX was first discovered by \cite{Lamport1986}.
+
+\subsubsection{Masking publications}
+In order to mask your publications,  you will need to make a copy of your personal references, using the second version with a key name adding \texttt{-hidden}. For example, if your reference key is \texttt{myotherpublication}, make a copy called \texttt{myotherpublication-hidden} that has text displayed how you would like it displayed in blind review mode.  Wrap your reference name with the \textit{anoncite} function. For example, to make \texttt{{\char'134}cite\{mypublication\}} anonymous in the blind version, use the following instead.
+\texttt{{\char'134}cite\{{\char'134}anoncite\{mypublication\}\}}.
+You will note that \cite{\anoncite{mypublication}} and \cite{\anoncite{myotherpublication}} were written by me, so in blind mode, the identifying parts will be suppressed.
+
+Some examples for the use of references in the text:\\
+
+\cite{Lamport1986}, \cite{\anoncite{mypublication}} 
+
+%reference in brackets, multiple authors
+\citep*{Lamport1986}, \citep*{\anoncite{myotherpublication}}  
+
+\section{Original Source}
+This template was based on the APA6 packagae obtained through Overleaf and was covered under the Creative Commons CC BY 4.0
+Commons CC BY 4.0 \cite{overleafAPA6Reference}.
+The code for creating the black boxes was originally found at \cite{texStackExchange}
+I hope you find this package useful. Also, please excuse the non-Australian spelling of \textit{anonymize}.
+
+\bibliography{example}
+
+\end{document}
+
+%
+% Please see the package documentation for more information
+% on the APA6 document class:
+%
+% http://www.ctan.org/pkg/apa6
+%
